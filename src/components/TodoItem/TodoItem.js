@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-import './TodoItem.css';
+import Checkbox from './Checkbox';
+import TaskInfo from './TaskInfo';
+import EditInputs from './EditInputs';
+import { EditButton, DeleteButton, SaveButton, CancelButton } from './Button';
+import styles from './TodoItem.module.css';
 
 const TodoItem = ({ id, task, onCheckboxChange, onEdit, onDelete }) => {
     const [editMode, setEditMode] = useState(false);
@@ -61,67 +65,33 @@ const TodoItem = ({ id, task, onCheckboxChange, onEdit, onDelete }) => {
 
     return (
         <div
-            className={`todo-item ${
-                isDeadlineClosest() ? 'closest-deadline' : ''
-            } ${isDeadlineOverdue() ? 'overdue-deadline' : ''}`}
+            className={`${styles.todoItem} ${
+                isDeadlineClosest() ? styles.closestDeadline : ''
+            } ${isDeadlineOverdue() ? styles.overdueDeadline : ''}`}
         >
-            <input
-                type="checkbox"
-                checked={task.completed}
-                onChange={handleCheckboxChange}
-            />
+            <Checkbox checked={task.completed} onChange={handleCheckboxChange} />
+
             {!editMode ? (
-                <div className="task-info">
-                    <div>
-            <span className={task.completed ? 'completed' : ''}>
-              {task.name}
-            </span>
-                    </div>
-                    <div>
-            <span className={task.completed ? 'completed' : ''}>
-              {task.deadline}
-            </span>
-                    </div>
-                </div>
+                <TaskInfo task={task} />
             ) : (
-                <div className="edit-inputs">
-                    <input
-                        type="text"
-                        value={editedName}
-                        onChange={handleEditedNameChange}
-                        onKeyDown={handleKeyDown}
-                        className="edit-input"
-                    />
-                    <input
-                        type="date"
-                        value={editedDeadline}
-                        onChange={handleEditedDeadlineChange}
-                        onKeyDown={handleKeyDown}
-                        className="edit-input"
-                    />
-                </div>
+                <EditInputs
+                    editedName={editedName}
+                    editedDeadline={editedDeadline}
+                    handleEditedNameChange={handleEditedNameChange}
+                    handleEditedDeadlineChange={handleEditedDeadlineChange}
+                    handleKeyDown={handleKeyDown}
+                />
             )}
+
             {!editMode ? (
                 <div>
-                    <button
-                        onClick={handleEditClick}
-                        disabled={task.completed}
-                        className="edit-button"
-                    >
-                        Змінити
-                    </button>
-                    <button onClick={handleDeleteClick} className="delete-button">
-                        Видалити
-                    </button>
+                    <EditButton handleEditClick={handleEditClick} disabled={task.completed} />
+                    <DeleteButton handleDeleteClick={handleDeleteClick} />
                 </div>
             ) : (
                 <div>
-                    <button onClick={handleSaveEdit} className="save-button">
-                        Зберегти
-                    </button>
-                    <button onClick={handleCancelEdit} className="cancel-button">
-                        Скасувати
-                    </button>
+                    <SaveButton handleSaveEdit={handleSaveEdit} />
+                    <CancelButton handleCancelEdit={handleCancelEdit} />
                 </div>
             )}
         </div>

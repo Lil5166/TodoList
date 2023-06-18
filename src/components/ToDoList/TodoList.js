@@ -1,31 +1,15 @@
 import React, { useState } from 'react';
-import TodoItem from "../TodoItem/TodoItem";
-import './TodoList.css';
+import TodoHeader from './TodoHeader';
+import TaskInput from './TaskInput';
+import SearchInput from './SearchInput';
+import TaskList from './TaskList';
 
 const TodoList = () => {
     const [tasks, setTasks] = useState([]);
-    const [taskName, setTaskName] = useState("");
-    const [taskDeadline, setTaskDeadline] = useState("");
+    const [searchTerm, setSearchTerm] = useState('');
 
-    const handleTaskNameChange = (e) => {
-        setTaskName(e.target.value);
-    };
-
-    const handleTaskDeadlineChange = (e) => {
-        setTaskDeadline(e.target.value);
-    };
-
-    const handleAddTask = () => {
-        if (taskName.trim() !== "" && taskDeadline.trim() !== "") {
-            const newTask = {
-                name: taskName,
-                deadline: taskDeadline,
-                completed: false
-            };
-            setTasks([...tasks, newTask]);
-            setTaskName("");
-            setTaskDeadline("");
-        }
+    const handleAddTask = (newTask) => {
+        setTasks([...tasks, newTask]);
     };
 
     const handleTaskCheckboxChange = (index) => {
@@ -40,7 +24,7 @@ const TodoList = () => {
                 return {
                     ...task,
                     name: newName,
-                    deadline: newDeadline
+                    deadline: newDeadline,
                 };
             }
             return task;
@@ -54,44 +38,28 @@ const TodoList = () => {
         setTasks(updatedTasks);
     };
 
-    const handleKeyDown = (e) => {
-        if (e.key === 'Enter') {
-            handleAddTask();
-        }
+    const handleSearchTermChange = (e) => {
+        setSearchTerm(e.target.value);
     };
 
+    const filteredTasks = tasks.filter((task) =>
+        task.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
-        <div className="todo-list">
-            <h1>Todo List</h1>
-            <div className="input-container">
-                <input
-                    type="text"
-                    value={taskName}
-                    onChange={handleTaskNameChange}
-                    onKeyDown={handleKeyDown}
-                    placeholder="Назва задачі"
-                />
-                <input
-                    type="date"
-                    value={taskDeadline}
-                    onChange={handleTaskDeadlineChange}
-                    onKeyDown={handleKeyDown}
-                    placeholder="Дедлайн"
-                />
-                <button onClick={handleAddTask}>Додати задачу</button>
-            </div>
-            <div className="task-list">
-                {tasks.map((task, index) => (
-                    <TodoItem
-                        key={index}
-                        id={index}
-                        task={task}
-                        onCheckboxChange={handleTaskCheckboxChange}
-                        onEdit={handleTaskEdit}
-                        onDelete={handleTaskDelete}
-                    />
-                ))}
-            </div>
+        <div>
+            <TodoHeader />
+            <TaskInput onAddTask={handleAddTask} />
+            <SearchInput
+                searchTerm={searchTerm}
+                onSearchTermChange={handleSearchTermChange}
+            />
+            <TaskList
+                tasks={filteredTasks}
+                onTaskCheckboxChange={handleTaskCheckboxChange}
+                onTaskEdit={handleTaskEdit}
+                onTaskDelete={handleTaskDelete}
+            />
         </div>
     );
 };
