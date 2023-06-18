@@ -18,70 +18,12 @@
     text-decoration: line-through;
 }
 
-.edit-button {
-    margin-right: 5px;
-    background-color: #4caf50;
-    color: white;
-    padding: 8px 16px;
-    font-size: 14px;
-    border: none;
-    border-radius: 5px;
-}
-
-.delete-button {
-    background-color: #FF5C5C;
-    color: #fff;
-    padding: 8px 16px;
-    font-size: 14px;
-    border: none;
-    border-radius: 5px;
-}
-
-.edit-button:hover,
-.delete-button:hover {
-    cursor: pointer;
-    opacity: 0.8;
-}
-
-.todo-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.task-info {
-    margin-left: 10px;
-}
-
-.completed {
-    text-decoration: line-through;
-}
-
-.edit-inputs {
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
-}
-
-.edit-input {
-    border: 1px solid #ccc;
-    padding: 5px;
-    margin-right: 5px;
-    font-size: 14px;
-}
-
-.save-button {
-    background-color: #4caf50;
-    color: white;
-}
-
-.cancel-button {
-    background-color: #FF5C5C;
-    color: white;
-}
-
+.edit-button,
+.delete-button,
 .save-button,
 .cancel-button {
+    background-color: #4caf50;
+    color: white;
     border: none;
     padding: 5px 10px;
     margin-right: 5px;
@@ -89,12 +31,32 @@
     border-radius: 5px;
 }
 
-.save-button:hover,
-.cancel-button:hover {
-    opacity: 0.8;
+.delete-button {
+    background-color: #f44336;
 }
 
 .edit-button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+}
+
+.closest-deadline {
+    background-color: #fff2cc;
+}
+
+.overdue-deadline {
+    background-color: #ffd2d2;
+}
+
+.todo-item .edit-inputs {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.todo-item .edit-input {
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin-right: 5px;
+    font-size: 14px;
 }
