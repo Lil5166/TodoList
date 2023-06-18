@@ -1,32 +1,32 @@
-.todo-list {
-    max-width: 800px;
+.todoList {
+    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
     background-color: #f5f5f5;
     font-family: Arial, sans-serif;
 }
 
-.todo-list h1 {
+.todoList h1 {
     text-align: center;
     margin-bottom: 20px;
 }
 
-.input-container {
+.inputContainer {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
 }
 
-.input-container input[type="text"],
-.input-container input[type="date"] {
+.inputContainer input[type="text"],
+.inputContainer input[type="date"] {
     padding: 10px;
     margin-right: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-.input-container button {
+.inputContainer button {
     padding: 10px 20px;
     background-color: #4caf50;
     color: #fff;
@@ -35,16 +35,16 @@
     cursor: pointer;
 }
 
-.input-container button:hover {
+.inputContainer button:hover {
     background-color: #45a049;
 }
 
-.task-list {
+.taskList {
     list-style-type: none;
     padding: 0;
 }
 
-.task-list li {
+.taskList li {
     background-color: #fff;
     padding: 10px;
     margin-bottom: 10px;
@@ -54,20 +54,20 @@
     align-items: center;
 }
 
-.task-list li.completed {
+.taskList li.completed {
     text-decoration: line-through;
     color: #aaa;
 }
 
-.task-list li .checkbox {
+.taskList li .checkbox {
     margin-right: 10px;
 }
 
-.task-list li .actions {
+.taskList li .actions {
     margin-left: auto;
 }
 
-.task-list li .actions button {
+.taskList li .actions button {
     padding: 5px 10px;
     background-color: #f44336;
     color: #fff;
@@ -77,6 +77,34 @@
     margin-left: 5px;
 }
 
-.task-list li .actions button:hover {
+.taskList li .actions button:hover {
     background-color: #e53935;
 }
+
+.searchContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.searchContainer input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.searchContainer button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.searchContainer button:hover {
+    background-color: #0056b3;
+}
+
