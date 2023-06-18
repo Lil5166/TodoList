@@ -43,8 +43,28 @@ const TodoItem = ({ id, task, onCheckboxChange, onEdit, onDelete }) => {
         }
     };
 
+    const isDeadlineClosest = () => {
+        const currentDate = new Date().setHours(0, 0, 0, 0);
+        const deadlineDate = new Date(task.deadline).setHours(0, 0, 0, 0);
+        const timeDifference = deadlineDate - currentDate;
+        const daysDifference = Math.ceil(timeDifference / (1000 * 3600 * 24));
+
+        return daysDifference >= 0 && daysDifference < 3;
+    };
+
+    const isDeadlineOverdue = () => {
+        const currentDate = new Date().setHours(0, 0, 0, 0);
+        const deadlineDate = new Date(task.deadline).setHours(0, 0, 0, 0);
+
+        return currentDate > deadlineDate;
+    };
+
     return (
-        <div className="todo-item">
+        <div
+            className={`todo-item ${
+                isDeadlineClosest() ? 'closest-deadline' : ''
+            } ${isDeadlineOverdue() ? 'overdue-deadline' : ''}`}
+        >
             <input
                 type="checkbox"
                 checked={task.completed}
