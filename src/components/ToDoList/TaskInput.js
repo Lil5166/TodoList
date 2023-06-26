@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import modules from './TodoList.module.css'
 
-const TaskInput = ({ onAddTask }) => {
+const TaskInput = ({onAddTask}) => {
     const [taskName, setTaskName] = useState('');
     const [taskDeadline, setTaskDeadline] = useState('');
 

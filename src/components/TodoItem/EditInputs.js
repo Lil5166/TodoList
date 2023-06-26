@@ -1,12 +1,12 @@
 import React from 'react';
-import modules from './TodoItem.module.css'
+import modules from './TodoItem.module.css';
 
 const EditInputs = ({
                         editedName,
                         editedDeadline,
                         handleEditedNameChange,
                         handleEditedDeadlineChange,
-                        handleKeyDown
+                        handleKeyDown,
                     }) => {
     return (
         <div className={modules.editInputs}>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import TodoHeader from './TodoHeader';
 import TaskInput from './TaskInput';
 import SearchInput from './SearchInput';
@@ -48,8 +48,8 @@ const TodoList = () => {
 
     return (
         <div>
-            <TodoHeader />
-            <TaskInput onAddTask={handleAddTask} />
+            <TodoHeader/>
+            <TaskInput onAddTask={handleAddTask}/>
             <SearchInput
                 searchTerm={searchTerm}
                 onSearchTermChange={handleSearchTermChange}

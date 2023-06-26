@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './TodoItem.module.css'
 
-export function EditButton({ handleEditClick, disabled }) {
+export function EditButton({handleEditClick, disabled}) {
     return (
         <button onClick={handleEditClick} disabled={disabled} className={styles.editButton}>
             Змінити
@@ -9,7 +9,7 @@ export function EditButton({ handleEditClick, disabled }) {
     );
 }
 
-export function DeleteButton({ handleDeleteClick }) {
+export function DeleteButton({handleDeleteClick}) {
     return (
         <button onClick={handleDeleteClick} className={styles.deleteButton}>
             Видалити
@@ -17,7 +17,7 @@ export function DeleteButton({ handleDeleteClick }) {
     );
 }
 
-export function SaveButton({ handleSaveEdit }) {
+export function SaveButton({handleSaveEdit}) {
     return (
         <button onClick={handleSaveEdit} className={styles.saveButton}>
             Зберегти
@@ -25,7 +25,7 @@ export function SaveButton({ handleSaveEdit }) {
     );
 }
 
-export function CancelButton({ handleCancelEdit }) {
+export function CancelButton({handleCancelEdit}) {
     return (
         <button onClick={handleCancelEdit} className={styles.cancelButton}>
             Скасувати
