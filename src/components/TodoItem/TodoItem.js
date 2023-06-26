@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Checkbox from './Checkbox';
 import TaskInfo from './TaskInfo';
 import EditInputs from './EditInputs';
-import { EditButton, DeleteButton, SaveButton, CancelButton } from './Button';
+import {EditButton, DeleteButton, SaveButton, CancelButton} from './Button';
 import styles from './TodoItem.module.css';
 
-const TodoItem = ({ id, task, onCheckboxChange, onEdit, onDelete }) => {
+const TodoItem = ({id, task, onCheckboxChange, onEdit, onDelete}) => {
     const [editMode, setEditMode] = useState(false);
     const [editedName, setEditedName] = useState(task.name);
     const [editedDeadline, setEditedDeadline] = useState(task.deadline);
@@ -69,10 +69,10 @@ const TodoItem = ({ id, task, onCheckboxChange, onEdit, onDelete }) => {
                 isDeadlineClosest() ? styles.closestDeadline : ''
             } ${isDeadlineOverdue() ? styles.overdueDeadline : ''}`}
         >
-            <Checkbox checked={task.completed} onChange={handleCheckboxChange} />
+            <Checkbox checked={task.completed} onChange={handleCheckboxChange}/>
 
             {!editMode ? (
-                <TaskInfo task={task} />
+                <TaskInfo task={task}/>
             ) : (
                 <EditInputs
                     editedName={editedName}
@@ -85,13 +85,13 @@ const TodoItem = ({ id, task, onCheckboxChange, onEdit, onDelete }) => {
 
             {!editMode ? (
                 <div>
-                    <EditButton handleEditClick={handleEditClick} disabled={task.completed} />
-                    <DeleteButton handleDeleteClick={handleDeleteClick} />
+                    <EditButton handleEditClick={handleEditClick} disabled={task.completed}/>
+                    <DeleteButton handleDeleteClick={handleDeleteClick}/>
                 </div>
             ) : (
                 <div>
-                    <SaveButton handleSaveEdit={handleSaveEdit} />
-                    <CancelButton handleCancelEdit={handleCancelEdit} />
+                    <SaveButton handleSaveEdit={handleSaveEdit}/>
+                    <CancelButton handleCancelEdit={handleCancelEdit}/>
                 </div>
             )}
         </div>

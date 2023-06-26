@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './TodoItem.module.css';
 
-const TaskInfo = ({ task }) => {
+const TaskInfo = ({task}) => {
     return (
         <div className={styles.taskInfo}>
             <div>
